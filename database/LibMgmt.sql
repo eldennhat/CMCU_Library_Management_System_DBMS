@@ -29,8 +29,8 @@ CREATE TABLE Book_copy (
 CREATE TABLE Borrow_Ticket (
     ticket_id INT PRIMARY KEY,
     reader_id SMALLINT,
-    borrow_date DATETIME,
-    return_date DATETIME,
+    borrow_date DATE,
+    return_date DATE,
     FOREIGN KEY (reader_id) REFERENCES Readers(reader_id)
 );
 
@@ -42,4 +42,5 @@ CREATE TABLE Borrow_details (
     PRIMARY KEY (ticket_id, copy_id), -- Khóa chính ghép
     FOREIGN KEY (ticket_id) REFERENCES Borrow_Ticket(ticket_id),
     FOREIGN KEY (copy_id) REFERENCES Book_copy(copy_id)
+
 );
