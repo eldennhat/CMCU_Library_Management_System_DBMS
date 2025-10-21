@@ -11,7 +11,9 @@ CREATE TABLE Tilte (
 CREATE TABLE Readers (
     reader_id SMALLINT PRIMARY KEY,
     reader_name VARCHAR(255),
-    contact_number BIGINT
+    contact_number BIGINT,
+    gender CHAR(1),
+    address VARCHAR(255)
 );
 
 -- Tạo bảng Book_copy (Bản sao sách)
@@ -44,3 +46,4 @@ CREATE TABLE Borrow_details (
     FOREIGN KEY (copy_id) REFERENCES Book_copy(copy_id)
 
 );
+
