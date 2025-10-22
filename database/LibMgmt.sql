@@ -12,7 +12,6 @@ CREATE TABLE Readers (
     reader_id SMALLINT PRIMARY KEY,
     reader_name VARCHAR(255),
     contact_number BIGINT,
-    gender CHAR(1),
     address VARCHAR(255)
 );
 
@@ -46,4 +45,5 @@ CREATE TABLE Borrow_details (
     FOREIGN KEY (copy_id) REFERENCES Book_copy(copy_id)
 
 );
+
 
