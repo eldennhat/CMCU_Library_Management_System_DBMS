@@ -18,12 +18,12 @@ CREATE TABLE Readers (
 -- Tạo bảng Book_copy (Bản sao sách)
 CREATE TABLE Book_copy (
     copy_id CHAR(5) PRIMARY KEY,
-    Tilte_id CHAR(5),
+    Title_id CHAR(5),
     [Status] CHAR(50),
     Publisher VARCHAR(50),
     Year_publish SMALLINT,
     Remaining_quantity BIGINT,
-    FOREIGN KEY (Tilte_id) REFERENCES Tilte(Tilte_id)
+    FOREIGN KEY (Title_id) REFERENCES Title(Title_id)
 );
 
 -- Tạo bảng Borrow_Ticket (Phiếu mượn)
@@ -45,6 +45,7 @@ CREATE TABLE Borrow_details (
     FOREIGN KEY (copy_id) REFERENCES Book_copy(copy_id)
 
 );
+
 
 
 
