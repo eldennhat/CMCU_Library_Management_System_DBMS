@@ -3,16 +3,16 @@
 -- Tạo bảng Tilte (Đầu sách)
 CREATE TABLE Title (
     Title_id CHAR(5) PRIMARY KEY,
-    Title_name VARCHAR(255),
-    author VARCHAR(255)
+    Title_name NVARCHAR(255),
+    author NVARCHAR(255)
 );
 
 -- Tạo bảng Readers (Độc giả)
 CREATE TABLE Readers (
     reader_id SMALLINT PRIMARY KEY,
-    reader_name VARCHAR(255),
+    reader_name NVARCHAR(255),
     contact_number BIGINT,
-    address VARCHAR(255)
+    address NVARCHAR(255)
 );
 
 -- Tạo bảng Book_copy (Bản sao sách)
@@ -20,7 +20,7 @@ CREATE TABLE Book_copy (
     copy_id CHAR(5) PRIMARY KEY,
     Title_id CHAR(5),
     [Status] CHAR(50),
-    Publisher VARCHAR(50),
+    Publisher NVARCHAR(50),
     Year_publish SMALLINT,
     Remaining_quantity BIGINT,
     FOREIGN KEY (Title_id) REFERENCES Title(Title_id)
@@ -45,6 +45,7 @@ CREATE TABLE Borrow_details (
     FOREIGN KEY (copy_id) REFERENCES Book_copy(copy_id)
 
 );
+
 
 
 
