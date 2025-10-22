@@ -1,4 +1,4 @@
-INSERT INTO Title (TitleID, Title_name, author) VALUES
+INSERT INTO Title (Title_id, Title_name, author) VALUES
 -- 🇻🇳 Sách tiếng Việt
 ('A0001', N'Lập Trình Java Cơ Bản', N'Nguyễn Văn A'),
 ('A0002', N'Lập Trình Hướng Đối Tượng', N'Lê Minh B'),
