@@ -1,4 +1,4 @@
-﻿INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+﻿INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10001,
 	N'Đinh Nguyên Hoàng',
@@ -6,7 +6,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10002,
 	N'Phạm Tuấn Hưng',
@@ -14,7 +14,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10003,
 	N'Nguyễn Thành An',
@@ -22,7 +22,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10004,
 	N'Nhật Minh Quang',
@@ -30,7 +30,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10005,
 	N'Triệu Hồng Quân',
@@ -38,7 +38,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10006,
 	N'Nghiêm Gia Bảo',
@@ -46,7 +46,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10007,
 	N'Hà Văn Võ Quyền',
@@ -54,7 +54,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10008,
 	N'Khuất Thuỳ Linh',
@@ -62,7 +62,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10009,
 	N'Vũ Ngọc Linh',
@@ -70,7 +70,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10010,
 	N'Nguyễn Quốc Bình',
@@ -78,7 +78,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10011,
 	N'Nguyễn Nông Quốc Hùng',
@@ -86,7 +86,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10012,
 	N'Vũ Thị Phương Anh',
@@ -94,7 +94,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10013,
 	N'Nguyễn Hà Nam Khánh',
@@ -102,7 +102,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10014,
 	N'Nguyễn Hà Khoa',
@@ -110,7 +110,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10015,
 	N'Chu Mạnh Quân',
@@ -118,7 +118,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10016,
 	N'Nguyễn Tiến Dũng',
@@ -126,7 +126,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10017,
 	N'Nguyễn Hoàng Phúc',
@@ -134,7 +134,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10018,
 	N'Ngô Trần Bình Dương',
@@ -142,7 +142,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10019,
 	N'Trần Quang Khải',
@@ -150,7 +150,7 @@ VALUES (
 );
 GO
 
-INSERT INTO Readers (reader_id, reader_name, address, contact_number)
+INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10020,
 	N'Nguyễn Lan Hương',
@@ -158,3 +158,4 @@ VALUES (
 );
 
 GO
+
