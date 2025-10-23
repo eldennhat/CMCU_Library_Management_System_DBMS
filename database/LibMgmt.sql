@@ -12,7 +12,6 @@ CREATE TABLE Readers (
     reader_id SMALLINT PRIMARY KEY,
     reader_name NVARCHAR(255),
     contact_number BIGINT,
-    address NVARCHAR(255)
 );
 
 -- Tạo bảng Book_copy (Bản sao sách)
@@ -45,6 +44,7 @@ CREATE TABLE Borrow_details (
     FOREIGN KEY (copy_id) REFERENCES Book_copy(copy_id)
 
 );
+
 
 
 
