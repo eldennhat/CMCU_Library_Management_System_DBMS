@@ -23,7 +23,7 @@ create table Author -- tác giả
 (
 	AuthorId varchar(255) primary key,
 	AuthorName nvarchar(255) not null unique,
-	PenName nvarchar(255) null
+	PenName nvarchar(255) null unique
 )
 
 
@@ -133,3 +133,4 @@ create table Reservation
 	constraint FK_Reservation_Book foreign key(BookId) references Book(BookId),
 	constraint FK_Reservation_Reader foreign key(ReaderId) references Reader(ReaderId)
 )
+
