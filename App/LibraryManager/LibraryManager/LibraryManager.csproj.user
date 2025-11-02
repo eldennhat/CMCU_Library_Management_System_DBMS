@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Forms\BasicDirectory\frmAuthorManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\BasicDirectory\frmCategoryManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\BookManage\frmBookCopyManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\BookManage\frmBookManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\BorrowPayback\frmLoanHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\BorrowPayback\frmLoanManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\BorrowPayback\frmReturnManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Other\frmBorrowPayback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\BasicDirectory\frmPublisherManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Other\frmBasicDirectory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Other\frmBookManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Reader\frmReaderManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Setplace\frmReservationManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Staff\frmStaffManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
