@@ -13,5 +13,7 @@ namespace LibraryManager.Forms
             ApplicationConfiguration.Initialize();
             Application.Run(new frmRegister());
         }
+
+        // test push
     }
 }
