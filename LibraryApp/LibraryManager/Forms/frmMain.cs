@@ -5,6 +5,7 @@ using LibraryManager.Forms.Other;
 using LibraryManager.Forms.Reader;
 using LibraryManager.Forms.Setplace;
 using LibraryManager.Forms.Staff;
+using LibraryManager.Models;
 using System.Data.SqlClient;
 
 namespace LibraryManager.Forms
@@ -22,25 +23,9 @@ namespace LibraryManager.Forms
 
         private frmBasicDirectory basicDirectoryForm;
 
-        private frmAuthorManagment authorManagmentForm;
-
-        private frmCategoryManagment categoryManagmentForm;
-
-        private frmPublisherManagment publisherManagmentForm;
-
         private frmBookManage bookManageForm;
 
-        private frmBookCopyManagment bookCopyManagmentForm;
-
-        private frmBookManagment bookManagmentForm;
-
         private frmBorrowPayback borrowPaybackForm;
-
-        private frmLoanHistory loanHistoryForm;
-
-        private frmLoanManagment loanManagmentForm;
-
-        private frmReturnManagment returnManagmentForm;
 
         private frmReaderManagment readerManagmentForm;
 
@@ -49,6 +34,8 @@ namespace LibraryManager.Forms
         private frmReservationManagment reservationManagmentForm;
 
         public string ConnectionString { get; set; }
+
+        public string UserRole { get; set; }
 
         #region Events
         private void cbWindowsAuthentication_CheckedChanged(object sender, EventArgs e)
@@ -85,6 +72,11 @@ namespace LibraryManager.Forms
             }
         }
 
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            ApplyRolePermissions();
+        }
+
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             var result = MessageBox.Show("Bạn có chắc chắn muốn thoát chương trình?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -100,6 +92,12 @@ namespace LibraryManager.Forms
         #endregion
 
         #region Helpers
+        private void ApplyRolePermissions()
+        {
+            if (UserRole == "Librarian") btnStaffManagment.Enabled = false;
+        }
+
+
         private void InitializeConnectionOptions()
         {
             SetWindowsAuthControlsEnabled(false);
@@ -182,6 +180,7 @@ namespace LibraryManager.Forms
 
         private void btnStaffManagment_Click(object sender, EventArgs e)
         {
+
             if (staffManagmentForm == null || staffManagmentForm.IsDisposed)
             {
                 staffManagmentForm = new frmStaffManagment();
@@ -254,5 +253,7 @@ namespace LibraryManager.Forms
                 }
             }
         }
+
+        
     }
 }

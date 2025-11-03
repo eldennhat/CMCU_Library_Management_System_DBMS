@@ -11,14 +11,17 @@ namespace LibraryManager.Models.Sub
     {
         public string Address { get; set; } = string.Empty;
         public DateTime CreateAt { get; set; } = DateTime.Now;
-        public Reader(string id, string fullName, string phoneNumber, string address,  DateTime createAt,bool isActive)
+        public string Fine { get; set; } // tiền phạt
+        public string Deposit { get; set; } // tiền đặt cọc bằng 150% hoặc 200% tiền thuê sách (luôn > tiền sách + tiền phạt)
+        public Reader(string id, string fullName, string phoneNumber, string address,  DateTime createAt, string fine, string deposit)
         {
             Id = id;
             FullName = fullName;
             PhoneNumber = phoneNumber;
             Address = address;
             CreateAt = createAt;
-            IsActive = isActive;
+            Fine = fine;
+            Deposit = deposit;
         }
     }
 }

@@ -118,7 +118,9 @@ namespace LibraryManager.Forms
             if (user != null)
             {
                 MessageBox.Show("Đăng nhập thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                new frmMain().Show();
+                var mainForm = new frmMain();
+                mainForm.UserRole = user.role; // Truyền role vào đây
+                mainForm.Show();
 
                 /*var result = MessageBox.Show("Bạn có muốn ẩn form đăng nhập không?", "Hệ thống", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)*/

@@ -269,6 +269,7 @@
             Name = "frmMain";
             Text = "Quản lý thư viện";
             FormClosing += frmMain_FormClosing;
+            Load += frmMain_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

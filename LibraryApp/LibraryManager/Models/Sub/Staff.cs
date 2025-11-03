@@ -10,14 +10,17 @@ namespace LibraryManager.Models.Sub
     public class Staff : Person
     {
         public string Role { get; set; }
+        public TimeOnly DefaultStart { get; set; }
+        public TimeOnly DefaultEnd { get; set; }
 
-        public Staff(string id, string fullName, string phoneNumber, string role, bool isActive)
+        public Staff(string id, string fullName, string phoneNumber, string role, TimeOnly defaultStart, TimeOnly defaultEnd)
         {
             Id = id;
             FullName = fullName;
             PhoneNumber = phoneNumber;
             Role = role;
-            IsActive = isActive;
+            DefaultStart = defaultStart;
+            DefaultEnd = defaultEnd;
         }
     }
 }
