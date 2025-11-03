@@ -1,4 +1,4 @@
-﻿if  db_id('LibraryDB') is null
+if  db_id('LibraryDB') is null
 	create database LibraryDB
 
 go
@@ -78,7 +78,7 @@ create table Reader
 	[Address] nvarchar(255) not null,
 	CreateAt datetime2 not null default sysdatetime(), -- lưu thời điểm bản ghi được tạo
 	Fine decimal(20,0) null, -- tiền phạt
-	IsActive bit not null default 1 -- mặc định đang hoạt động
+	Deposit decimal(20, 0) null -- tiền cọc (tiền cọc > tiền sách + tiền phạt)
 )
 
 
@@ -91,7 +91,6 @@ create table Staff
 	[Role] nvarchar(255) not null,
 	DefaultStart time(0) null,  -- giờ vào ca mặc định (vd 08:00)
     DefaultEnd time(0) null, -- giờ hết ca mặc định (vd 17:00)
-	IsActive bit not null default 1 
 )
 
 
@@ -138,6 +137,3 @@ create table Reservation
 	constraint FK_Reservation_Book foreign key(BookId) references Book(BookId),
 	constraint FK_Reservation_Reader foreign key(ReaderId) references Reader(ReaderId)
 )
-
-
-
