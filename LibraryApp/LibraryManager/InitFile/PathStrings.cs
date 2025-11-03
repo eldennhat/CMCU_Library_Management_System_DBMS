@@ -10,5 +10,6 @@ namespace LibraryManager.InitFile
     {
         public static readonly string folderPath = "Data";
         public static readonly string accountFileName = "Account.txt";
+        public static readonly string authorFileName = "Authors.txt";
     }
 }

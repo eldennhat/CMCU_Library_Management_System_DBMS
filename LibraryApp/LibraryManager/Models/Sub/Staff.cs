@@ -13,7 +13,7 @@ namespace LibraryManager.Models.Sub
         public TimeOnly DefaultStart { get; set; }
         public TimeOnly DefaultEnd { get; set; }
 
-        public Staff(string id, string fullName, string phoneNumber, string role, TimeOnly defaultStart, TimeOnly defaultEnd)
+        public Staff(int id, string fullName, string phoneNumber, string role, TimeOnly defaultStart, TimeOnly defaultEnd)
         {
             Id = id;
             FullName = fullName;

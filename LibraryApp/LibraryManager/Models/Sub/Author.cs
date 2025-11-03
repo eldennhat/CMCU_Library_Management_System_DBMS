@@ -11,11 +11,12 @@ namespace LibraryManager.Models.Sub
     {
         public string PenName { get; set; } = string.Empty;
 
-        public Author(string id, string fullName, string penName)
+        public Author(int id, string fullName, string penName, string phoneNumber)
         {
             Id = id;
             FullName = fullName;
             PenName = penName;
+            PhoneNumber = phoneNumber;
         }
     }
 }

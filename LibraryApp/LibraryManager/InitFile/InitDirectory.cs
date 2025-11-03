@@ -23,7 +23,6 @@ namespace LibraryManager.InitFile
 
         private static void CreateAccountFile()
         {
-            CreateFolder();
             string filePath = Path.Combine(PathStrings.folderPath, PathStrings.accountFileName);
 
             try
@@ -37,10 +36,26 @@ namespace LibraryManager.InitFile
             }
         }
 
+        private static void CreateAuthorsFile()
+        {
+            string filePath = Path.Combine(PathStrings.folderPath, PathStrings.authorFileName);
+
+            try
+            {
+                if (!File.Exists(filePath))
+                    File.Create(filePath).Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tạo file authors: " + ex.Message, "Hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public static void autoPathCreator()
         {
             CreateFolder();
             CreateAccountFile();
+            CreateAuthorsFile();
         }
     }
 }
