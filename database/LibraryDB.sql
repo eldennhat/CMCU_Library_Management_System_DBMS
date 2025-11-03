@@ -153,5 +153,6 @@ create table Account
 -- Mặc định 2 tài khoản đăng nhập được cấp phát bởi dev
 insert into Account (Username, PasswordHash, [Role], StaffId)
 values 
-	('admin', '123', N'Admin', null), -- password: admin123
+	('admin', '123', N'Admin', null), -- user: admin, password: 123
 	('librarian1', '123', N'Librarian', null)
+
