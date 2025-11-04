@@ -123,7 +123,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "frmRegister";
-            Text = "Đăng kí - Đăng nhập";
+            Text = "Đăng nhập";
             Load += frmRegister_Load;
             ((System.ComponentModel.ISupportInitialize)registerUserBindingSource).EndInit();
             ResumeLayout(false);
