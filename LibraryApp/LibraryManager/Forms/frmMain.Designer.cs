@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            btnBasicDirectory = new Button();
             btnBookManagement = new Button();
             btnBorrowPayback = new Button();
             btnReaderMangment = new Button();
@@ -37,19 +36,9 @@
             btnSetplace = new Button();
             SuspendLayout();
             // 
-            // btnBasicDirectory
-            // 
-            btnBasicDirectory.Location = new Point(12, 12);
-            btnBasicDirectory.Name = "btnBasicDirectory";
-            btnBasicDirectory.Size = new Size(384, 63);
-            btnBasicDirectory.TabIndex = 3;
-            btnBasicDirectory.Text = "Quản lý danh mục";
-            btnBasicDirectory.UseVisualStyleBackColor = true;
-            btnBasicDirectory.Click += btnBasicDirectory_Click;
-            // 
             // btnBookManagement
             // 
-            btnBookManagement.Location = new Point(12, 81);
+            btnBookManagement.Location = new Point(12, 12);
             btnBookManagement.Name = "btnBookManagement";
             btnBookManagement.Size = new Size(384, 63);
             btnBookManagement.TabIndex = 4;
@@ -59,7 +48,7 @@
             // 
             // btnBorrowPayback
             // 
-            btnBorrowPayback.Location = new Point(12, 150);
+            btnBorrowPayback.Location = new Point(12, 81);
             btnBorrowPayback.Name = "btnBorrowPayback";
             btnBorrowPayback.Size = new Size(384, 63);
             btnBorrowPayback.TabIndex = 5;
@@ -69,7 +58,7 @@
             // 
             // btnReaderMangment
             // 
-            btnReaderMangment.Location = new Point(12, 219);
+            btnReaderMangment.Location = new Point(12, 150);
             btnReaderMangment.Name = "btnReaderMangment";
             btnReaderMangment.Size = new Size(384, 63);
             btnReaderMangment.TabIndex = 6;
@@ -79,7 +68,7 @@
             // 
             // btnStaffManagment
             // 
-            btnStaffManagment.Location = new Point(12, 288);
+            btnStaffManagment.Location = new Point(12, 219);
             btnStaffManagment.Name = "btnStaffManagment";
             btnStaffManagment.Size = new Size(384, 63);
             btnStaffManagment.TabIndex = 7;
@@ -89,7 +78,7 @@
             // 
             // btnSetplace
             // 
-            btnSetplace.Location = new Point(15, 357);
+            btnSetplace.Location = new Point(15, 288);
             btnSetplace.Name = "btnSetplace";
             btnSetplace.Size = new Size(384, 63);
             btnSetplace.TabIndex = 8;
@@ -101,13 +90,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(411, 431);
+            ClientSize = new Size(411, 368);
             Controls.Add(btnSetplace);
             Controls.Add(btnStaffManagment);
             Controls.Add(btnReaderMangment);
             Controls.Add(btnBorrowPayback);
             Controls.Add(btnBookManagement);
-            Controls.Add(btnBasicDirectory);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmMain";
             Text = "Quản lý thư viện";
@@ -117,7 +105,6 @@
         }
 
         #endregion
-        private Button btnBasicDirectory;
         private Button btnBookManagement;
         private Button btnBorrowPayback;
         private Button btnReaderMangment;

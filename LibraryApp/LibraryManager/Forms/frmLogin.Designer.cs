@@ -105,7 +105,7 @@
             // 
             // registerUserBindingSource
             // 
-            registerUserBindingSource.DataSource = typeof(Models.Other.LoginrUser);
+            registerUserBindingSource.DataSource = typeof(Models.Other.LoginUser);
             // 
             // frmRegister
             // 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManager.Models.Other
 {
-    public class LoginrUser
+    public class LoginUser
     {
         public int AccountId { get; set; }
         public string? username { get; set; }

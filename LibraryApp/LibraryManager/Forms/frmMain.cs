@@ -1,12 +1,7 @@
-﻿using LibraryManager.Forms.BasicDirectory;
-using LibraryManager.Forms.BookManage;
-using LibraryManager.Forms.BorrowPayback;
-using LibraryManager.Forms.Other;
+﻿using LibraryManager.Forms.Other;
 using LibraryManager.Forms.Reader;
 using LibraryManager.Forms.Setplace;
 using LibraryManager.Forms.Staff;
-using LibraryManager.Models;
-using System.Data.SqlClient;
 
 namespace LibraryManager.Forms
 {
@@ -19,8 +14,6 @@ namespace LibraryManager.Forms
         {
             InitializeComponent();
         }
-
-        private frmBasicDirectory basicDirectoryForm;
 
         private frmBookManage bookManageForm;
 
@@ -70,17 +63,6 @@ namespace LibraryManager.Forms
             }
         }
         #endregion
-
-        private void btnBasicDirectory_Click(object sender, EventArgs e)
-        {
-            if (basicDirectoryForm == null || basicDirectoryForm.IsDisposed)
-            {
-                basicDirectoryForm = new frmBasicDirectory();
-                basicDirectoryForm.Show();
-            }
-            else
-                basicDirectoryForm.Activate();
-        }
 
         private void btnBookManagement_Click(object sender, EventArgs e)
         {

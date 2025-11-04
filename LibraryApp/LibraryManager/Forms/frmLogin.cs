@@ -1,9 +1,5 @@
-﻿using LibraryManager.InitFile;
-using LibraryManager.Models.Other;
-using Newtonsoft.Json;
-using System;
+﻿using LibraryManager.Models.Other;
 using System.Data.SqlClient;
-using System.Diagnostics.Eventing.Reader;
 
 namespace LibraryManager.Forms
 {
@@ -17,30 +13,9 @@ namespace LibraryManager.Forms
             InitializeComponent();
         }
 
-        #region Helpers
-        private void LoadData()
-        {
-            string filePath = Path.Combine(PathStrings.folderPath, PathStrings.accountFileName);
-            if (File.Exists(filePath))
-            {
-                var jsonData = File.ReadAllText(filePath);
-                var users = JsonConvert.DeserializeObject<List<LoginrUser>>(jsonData);
-                if (users != null)
-                {
-                    foreach (var user in users)
-                    {
-                        registerUserBindingSource.Add(user);
-                    }
-                }
-            }
-        }
-        #endregion
-
         #region Events
         private void frmRegister_Load(object sender, EventArgs e)
         {
-            InitDirectory.autoPathCreator();
-            LoadData();
         }
         #endregion
 
