@@ -28,23 +28,6 @@ create table BookCopy
 	StorageNote nvarchar(255) null, -- kệ của sách
 	BookMoney decimal(20,0) null, -- tiền sách
 	PublisherName nvarchar(255) not null,
-	Quantity smallint not null,
-	[Status] tinyint not null default 0, -- 0: Available, 1: OnLoan, 2: Lost, 3: Damaged
-
-
-	-- Số lượng > 0 => Còn sẵn (0: Available) cho phép sửa sang đang mượn (1: OnLoan) 
-	-- Số lượng = 0 => Không có sẵn (2: Lost)
-	-- Số lượng = -1 => Bị hỏng (3: Damaged)
-
-	constraint CK_Copy_BookMoney check (BookMoney >= 0),
-	constraint CK_Copy_Quantity check (Quantity >= -1), 
-	constraint CK_Copy_Status_Range check([Status] in (0,1,2,3)),
-	constraint CK_Copy_Status_Quantity check (
-    ([Status] = 0 and Quantity > 0) or
-    ([Status] = 1 and Quantity > 0) or
-    ([Status] = 2 and Quantity = 0) or
-    ([Status] = 3 and Quantity = -1)
-	),
 	constraint FK_Copy_Book foreign key(BookId) references Book(BookId) on delete cascade
 )
 
