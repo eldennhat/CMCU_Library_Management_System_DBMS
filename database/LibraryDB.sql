@@ -28,6 +28,7 @@ create table BookCopy
 	StorageNote nvarchar(255) null, -- kệ của sách
 	BookMoney decimal(20,0) null, -- tiền sách
 	PublisherName nvarchar(255) not null,
+	[Status] int not null default 0, -- -1: Mất, 0: Có sẵn, 1: Đang cho mượn
 	constraint FK_Copy_Book foreign key(BookId) references Book(BookId) on delete cascade
 )
 
