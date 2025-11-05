@@ -33,7 +33,6 @@
             btnBorrowPayback = new Button();
             btnReaderMangment = new Button();
             btnStaffManagment = new Button();
-            btnSetplace = new Button();
             SuspendLayout();
             // 
             // btnBookManagement
@@ -48,7 +47,7 @@
             // 
             // btnBorrowPayback
             // 
-            btnBorrowPayback.Location = new Point(12, 81);
+            btnBorrowPayback.Location = new Point(15, 81);
             btnBorrowPayback.Name = "btnBorrowPayback";
             btnBorrowPayback.Size = new Size(384, 63);
             btnBorrowPayback.TabIndex = 5;
@@ -76,28 +75,19 @@
             btnStaffManagment.UseVisualStyleBackColor = true;
             btnStaffManagment.Click += btnStaffManagment_Click;
             // 
-            // btnSetplace
-            // 
-            btnSetplace.Location = new Point(15, 288);
-            btnSetplace.Name = "btnSetplace";
-            btnSetplace.Size = new Size(384, 63);
-            btnSetplace.TabIndex = 8;
-            btnSetplace.Text = "Quản lý đặt chỗ";
-            btnSetplace.UseVisualStyleBackColor = true;
-            btnSetplace.Click += btnSetplace_Click;
-            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(411, 368);
-            Controls.Add(btnSetplace);
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(411, 296);
             Controls.Add(btnStaffManagment);
             Controls.Add(btnReaderMangment);
             Controls.Add(btnBorrowPayback);
             Controls.Add(btnBookManagement);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmMain";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản lý thư viện";
             FormClosing += frmMain_FormClosing;
             Load += frmMain_Load;
@@ -109,6 +99,5 @@
         private Button btnBorrowPayback;
         private Button btnReaderMangment;
         private Button btnStaffManagment;
-        private Button btnSetplace;
     }
 }

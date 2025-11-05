@@ -89,18 +89,6 @@ create table LoanDetail
 )
 
 
--- Đặt chỗ
-create table Reservation
-(
-	ReservationId int primary key,
-	BookId int not null,
-	ReaderId int not null,
-	ReservationDate datetime2 not null default sysdatetime(),
-	IsFulfilled bit not null default 0,
-
-	constraint FK_Reservation_Book foreign key(BookId) references Book(BookId),
-	constraint FK_Reservation_Reader foreign key(ReaderId) references Reader(ReaderId)
-)
 
 -- Tài khoản đăng nhập
 create table Account

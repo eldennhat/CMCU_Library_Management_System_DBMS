@@ -107,7 +107,7 @@
             // 
             registerUserBindingSource.DataSource = typeof(Models.Other.LoginUser);
             // 
-            // frmRegister
+            // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -122,7 +122,8 @@
             Controls.Add(txtUserLogin);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
-            Name = "frmRegister";
+            Name = "frmLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng nhập";
             Load += frmRegister_Load;
             ((System.ComponentModel.ISupportInitialize)registerUserBindingSource).EndInit();

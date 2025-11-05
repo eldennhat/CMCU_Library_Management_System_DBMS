@@ -195,6 +195,7 @@
             Controls.Add(groupBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmConnect";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmConnect";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

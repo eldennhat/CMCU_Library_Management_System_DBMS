@@ -1,6 +1,5 @@
 ﻿using LibraryManager.Forms.Other;
 using LibraryManager.Forms.Reader;
-using LibraryManager.Forms.Setplace;
 using LibraryManager.Forms.Staff;
 
 namespace LibraryManager.Forms
@@ -22,8 +21,6 @@ namespace LibraryManager.Forms
         private frmReaderManagment readerManagmentForm;
 
         private frmStaffManagment staffManagmentForm;
-
-        private frmReservationManagment reservationManagmentForm;
 
         public string UserRole { get; set; }
 
@@ -107,17 +104,6 @@ namespace LibraryManager.Forms
             }
             else
                 staffManagmentForm.Activate();
-        }
-
-        private void btnSetplace_Click(object sender, EventArgs e)
-        {
-            if (reservationManagmentForm == null || reservationManagmentForm.IsDisposed)
-            {
-                reservationManagmentForm = new frmReservationManagment();
-                reservationManagmentForm.Show();
-            }
-            else
-                reservationManagmentForm.Activate();
-        }    
+        }  
     }
 }
