@@ -79,7 +79,7 @@ create table LoanDetail
 	LoanDetailId int identity(1,1) primary key,
 	LoanId int not null,
 	CopyId int not null,
-	ReturnedDate datetime2 not null,
+	ReturnedDate datetime2 null,
 	Fine decimal(20,0) null, -- tiền phạt (nếu ReturnDate sau DueDate thì Fine tự động + 20000/1 ngày trả muộn, nếu sau 10 ngày ReturnedDate vẫn chưa trả thì Fine gấp đôi tiền sách. Bắt đầu tính từ LoanDate)
 	Deposit decimal(20, 0) null, -- tiền cọc (gấp đôi tiền sách) 
 
