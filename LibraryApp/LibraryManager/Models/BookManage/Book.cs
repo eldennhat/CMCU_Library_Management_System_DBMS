@@ -14,6 +14,6 @@ namespace LibraryManager.Models.BookManage
         public string? Title { get; set; }
         public string? CategoryName { get; set; }
 	    public string? BookAuthor { get; set; }
-	    public string? PublishYear { get; set; }
+	    public int PublishYear { get; set; }
     }
 }

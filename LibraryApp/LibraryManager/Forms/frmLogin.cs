@@ -82,5 +82,10 @@ namespace LibraryManager.Forms
                 }
             }
         }
+
+        private void registerUserBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

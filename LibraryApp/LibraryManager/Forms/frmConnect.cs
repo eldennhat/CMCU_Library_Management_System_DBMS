@@ -97,7 +97,7 @@ namespace LibraryManager.Forms
                 return;
             }
 
-            ConnectionString = $"Data Source={server};Initial Catalog=LibraryDB;Integrated Security=True;TrustServerCertificate=True";
+            ConnectionString = $"Data Source={server};Initial Catalog=LibraryDB;Integrated Security=True;TrustServerCertificate=True;";
 
             using (var conn = new SqlConnection(ConnectionString))
             {
@@ -150,6 +150,11 @@ namespace LibraryManager.Forms
                     MessageBox.Show("Kết nối thất bại:\n" + ex.Message);
                 }
             }
+        }
+
+        private void frmConnect_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

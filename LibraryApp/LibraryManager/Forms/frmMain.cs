@@ -1,6 +1,7 @@
 ﻿using LibraryManager.Forms.Other;
 using LibraryManager.Forms.Reader;
 using LibraryManager.Forms.Staff;
+using LibraryManager.InitFolder;
 
 namespace LibraryManager.Forms
 {
@@ -28,6 +29,7 @@ namespace LibraryManager.Forms
         private void frmMain_Load(object sender, EventArgs e)
         {
             ApplyRolePermissions();
+            Create.InitFolder();
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -39,7 +41,6 @@ namespace LibraryManager.Forms
                 e.Cancel = true;
                 return;
             }
-            CloseAllForms();
         }
         #endregion
 
@@ -48,17 +49,6 @@ namespace LibraryManager.Forms
         {
             if (UserRole == "Librarian") btnStaffManagment.Enabled = false;
         }
-
-        private void CloseAllForms()
-        {
-            var openForms = Application.OpenForms.Cast<Form>().ToArray();
-
-            foreach (var f in openForms)
-            {
-                if (f != this && !f.IsDisposed)
-                    f.Close();
-            }
-        }
         #endregion
 
         private void btnBookManagement_Click(object sender, EventArgs e)
@@ -66,6 +56,7 @@ namespace LibraryManager.Forms
             if (bookManageForm == null || bookManageForm.IsDisposed)
             {
                 bookManageForm = new frmBookManage();
+                bookManageForm.Owner = this;
                 bookManageForm.Show();
             }
             else
@@ -77,6 +68,7 @@ namespace LibraryManager.Forms
             if (borrowPaybackForm == null || borrowPaybackForm.IsDisposed)
             {
                 borrowPaybackForm = new frmBorrowPayback();
+                borrowPaybackForm.Owner = this;
                 borrowPaybackForm.Show();
             }
             else
@@ -88,6 +80,7 @@ namespace LibraryManager.Forms
             if (readerManagmentForm == null || readerManagmentForm.IsDisposed)
             {
                 readerManagmentForm = new frmReaderManagment();
+                readerManagmentForm.Owner = this;
                 readerManagmentForm.Show();
             }
             else
@@ -100,6 +93,7 @@ namespace LibraryManager.Forms
             if (staffManagmentForm == null || staffManagmentForm.IsDisposed)
             {
                 staffManagmentForm = new frmStaffManagment();
+                staffManagmentForm.Owner = this;
                 staffManagmentForm.Show();
             }
             else

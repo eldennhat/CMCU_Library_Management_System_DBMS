@@ -197,6 +197,7 @@
             Name = "frmConnect";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmConnect";
+            Load += frmConnect_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

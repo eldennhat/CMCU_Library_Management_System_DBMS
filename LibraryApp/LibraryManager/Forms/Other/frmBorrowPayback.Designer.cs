@@ -28,12 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "frmBorrowPayback";
+            btnLoan = new Button();
+            btnLoanDetails = new Button();
+            SuspendLayout();
+            // 
+            // btnLoan
+            // 
+            btnLoan.Location = new Point(12, 12);
+            btnLoan.Name = "btnLoan";
+            btnLoan.Size = new Size(288, 56);
+            btnLoan.TabIndex = 4;
+            btnLoan.Text = "Quản lý phiếu mượn";
+            btnLoan.UseVisualStyleBackColor = true;
+            btnLoan.Click += btnLoan_Click;
+            // 
+            // btnLoanDetails
+            // 
+            btnLoanDetails.Location = new Point(12, 74);
+            btnLoanDetails.Name = "btnLoanDetails";
+            btnLoanDetails.Size = new Size(288, 56);
+            btnLoanDetails.TabIndex = 3;
+            btnLoanDetails.Text = "Quản lý chi tiết phiếu mượn";
+            btnLoanDetails.UseVisualStyleBackColor = true;
+            btnLoanDetails.Click += btnLoanDetails_Click;
+            // 
+            // frmBorrowPayback
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(312, 142);
+            Controls.Add(btnLoan);
+            Controls.Add(btnLoanDetails);
+            Name = "frmBorrowPayback";
+            Text = "Quản lý mượn/trả sách";
+            FormClosing += frmBorrowPayback_FormClosing;
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btnLoan;
+        private Button btnLoanDetails;
     }
 }

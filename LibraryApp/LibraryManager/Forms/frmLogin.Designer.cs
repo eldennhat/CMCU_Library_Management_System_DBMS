@@ -106,6 +106,7 @@
             // registerUserBindingSource
             // 
             registerUserBindingSource.DataSource = typeof(Models.Other.LoginUser);
+            registerUserBindingSource.CurrentChanged += registerUserBindingSource_CurrentChanged;
             // 
             // frmLogin
             // 
