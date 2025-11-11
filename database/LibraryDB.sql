@@ -183,6 +183,3 @@ go
 
 select *
 from dbo.Book
-
-select *
-from dbo.BookCopy
