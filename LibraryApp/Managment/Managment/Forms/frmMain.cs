@@ -1,4 +1,4 @@
-﻿using LibraryManager.Models.BookModel;
+using LibraryManager.Models.BookModel;
 using Managment.Database;
 using Managment.Models.HumanModel;
 using System;
@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -89,10 +90,67 @@ namespace Managment.Forms
         #region Helper_Book
         private bool TryGetInputsBook(out string isbn, out string title, out string category, out string author, out int year)
         {
+            isbn = string.Empty;
+            title = string.Empty;
+            category = string.Empty;
+            author = string.Empty;
+            year = 0;
+
             isbn = txtISBN.Text.Trim();
             title = txtTitle.Text.Trim();
+
+            bool titleContainsNumber = false;
+            foreach (char c in title)
+            {
+                if (char.IsDigit(c))
+                {
+                    titleContainsNumber = true;
+                    break;
+                }
+            }
+            if (titleContainsNumber)
+            {
+                MessageBox.Show("Vui lòng không nhập số vào tên sách.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             category = txtCategory.Text.Trim();
+            bool categoryContainsNumber = false;
+            foreach (char c in category)
+            {
+                if (char.IsDigit(c))
+                {
+                    categoryContainsNumber = true;
+                    break;
+                }
+            }
+            if (categoryContainsNumber)
+            {
+                MessageBox.Show("Vui lòng không nhập số vào thể loại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             author = txtBookAuthor.Text.Trim();
+            bool authorContainsNumber = false;
+            foreach (char c in author)
+            {
+                if (char.IsDigit(c))
+                {
+                    authorContainsNumber = true;
+                    break;
+                }
+            }
+            if (authorContainsNumber)
+            {
+                MessageBox.Show("Vui lòng không nhập số vào nhà xuất bản.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(isbn) || string.IsNullOrWhiteSpace(title))
+            {
+                MessageBox.Show("Mã số tiêu chuẩn Quốc tế và Tên sách không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
             if (!int.TryParse(txtPublishYear.Text.Trim(), out year))
             {
@@ -100,17 +158,14 @@ namespace Managment.Forms
                 txtPublishYear.Focus();
                 return false;
             }
+
             if (year < 868 || year > DateTime.Now.Year)
             {
-                MessageBox.Show($"Năm xuất bản phải từ 868 đến {DateTime.Now.Year}.");
+                MessageBox.Show($"Năm xuất bản phải từ 868 đến {DateTime.Now.Year}.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPublishYear.Focus();
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(isbn) || string.IsNullOrWhiteSpace(title))
-            {
-                MessageBox.Show("Mã số tiêu chuẩn Quốc tế và Tên sách không được để trống.");
-                return false;
-            }
+
             return true;
         }
 
@@ -140,34 +195,58 @@ namespace Managment.Forms
         private bool TryGetInputsBookCopy(out int bookId, out string barcode, out string storagenote,
     out decimal bookmoney, out string publisher, out int statusValue)
         {
+            bookId = 0;
+            barcode = string.Empty;
+            storagenote = string.Empty;
+            bookmoney = 0;
+            publisher = string.Empty;
+            statusValue = 0;
+
             barcode = txtBarCode.Text.Trim();
             storagenote = txtStorageNote.Text.Trim();
             publisher = txtPublisher.Text.Trim();
-            bookmoney = 0;
+
+            bool publisherContainsNumber = false;
+            foreach (char c in publisher)
+            {
+                if (char.IsDigit(c))
+                {
+                    publisherContainsNumber = true;
+                    break;
+                }
+            }
+            if (publisherContainsNumber)
+            {
+                MessageBox.Show("Vui lòng không nhập số vào nhà xuất bản.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
             if (cbIDBook.SelectedValue == null)
             {
-                MessageBox.Show("Vui lòng chọn đầu sách.");
+                MessageBox.Show("Vui lòng chọn đầu sách.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cbIDBook.Focus();
-                bookId = 0;
-                statusValue = 0;
                 return false;
             }
             bookId = Convert.ToInt32(cbIDBook.SelectedValue);
 
             if (!decimal.TryParse(txtBookMoney.Text.Trim(), out bookmoney))
             {
-                MessageBox.Show("Giá tiền phải là số.");
+                MessageBox.Show("Giá tiền phải là số.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtBookMoney.Focus();
-                statusValue = 0;
+                return false;
+            }
+
+            if (bookmoney < 0)
+            {
+                MessageBox.Show("Giá tiền phải là số dương.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtBookMoney.Focus();
                 return false;
             }
 
             if (cbStatus.SelectedIndex < 0)
             {
-                MessageBox.Show("Vui lòng chọn trạng thái.");
+                MessageBox.Show("Vui lòng chọn trạng thái.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cbStatus.Focus();
-                statusValue = 0;
                 return false;
             }
 
@@ -182,7 +261,7 @@ namespace Managment.Forms
 
             if (string.IsNullOrWhiteSpace(barcode) || string.IsNullOrWhiteSpace(publisher))
             {
-                MessageBox.Show("Mã vạch và Nhà xuất bản không được để trống.");
+                MessageBox.Show("Mã vạch và Nhà xuất bản không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -232,6 +311,10 @@ namespace Managment.Forms
         #region Helper_Reader
         private bool TryGetInputsReaders(out string readerFullName, out string readerPhoneNumber, out string readerAddress, out DateTime timeCreate)
         {
+            readerFullName = string.Empty;
+            readerPhoneNumber = string.Empty;
+            readerAddress = string.Empty;
+
             readerFullName = txtReaderName.Text.Trim();
             readerPhoneNumber = txtReaderPhoneNumber.Text.Trim();
             readerAddress = txtReaderAddress.Text.Trim();
@@ -240,7 +323,21 @@ namespace Managment.Forms
 
             if (string.IsNullOrEmpty(readerFullName) || string.IsNullOrEmpty(readerPhoneNumber) || string.IsNullOrEmpty(readerAddress) || dtpReaderCreated.Text == null)
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin độc giả.");
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin độc giả.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            bool readerFullNameContainsNumber = false;
+            foreach (char c in readerFullName)
+            {
+                if (char.IsDigit(c))
+                {
+                    readerFullNameContainsNumber = true;
+                    break;
+                }
+            }
+            if (readerFullNameContainsNumber)
+            {
+                MessageBox.Show("Vui lòng không nhập số vào tên độc giả.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -311,21 +408,58 @@ namespace Managment.Forms
 
         private bool TryGetInputsStaff(out string fullName, out string phone, out TimeOnly defaultStart, out TimeOnly defaultEnd)
         {
+
+            fullName = string.Empty;
+            phone = string.Empty;
+            defaultStart = TimeOnly.MinValue;
+            defaultEnd = TimeOnly.MinValue;
+
             fullName = txtFullNameStaff.Text.Trim();
             phone = txtPhoneStaff.Text.Trim();
 
-            defaultStart = TimeOnly.FromDateTime(dtpTimeStart.Value);
-            defaultEnd = TimeOnly.FromDateTime(dtpTimeEnd.Value);
-
-            if (string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(phone))
+            if (string.IsNullOrWhiteSpace(fullName) || string.IsNullOrWhiteSpace(phone))
             {
-                MessageBox.Show("Vui lòng điền đầy đủ Họ tên và Số điện thoại.");
+                MessageBox.Show("Vui lòng điền đầy đủ Họ tên và Số điện thoại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
+            bool fullNameContainsNumber = false;
+            foreach (char c in fullName)
+            {
+                if (char.IsDigit(c))
+                {
+                    fullNameContainsNumber = true;
+                    break;
+                }
+            }
+            if (fullNameContainsNumber)
+            {
+                MessageBox.Show("Vui lòng không nhập số vào họ tên", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            bool phoneIsValid = true;
+            foreach (char c in phone)
+            {
+                if (!char.IsDigit(c))
+                {
+                    phoneIsValid = false;
+                    break;
+                }
+            }
+            if (!phoneIsValid || phone.Length < 10 || phone.Length > 11)
+            {
+                MessageBox.Show("Số điện thoại phải là 10-11 chữ số.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            // Parse time sau khi đã validate
+            defaultStart = TimeOnly.FromDateTime(dtpTimeStart.Value);
+            defaultEnd = TimeOnly.FromDateTime(dtpTimeEnd.Value);
+
             if (defaultStart >= defaultEnd)
             {
-                MessageBox.Show("Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc.");
+                MessageBox.Show("Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -712,7 +846,7 @@ namespace Managment.Forms
             var loanDetailId = GetSelectedLoanDetailId();
             if (loanDetailId == null)
             {
-                MessageBox.Show("Hãy chọn 1 dòng để trả sách.");
+                MessageBox.Show("Hãy chọn 1 dòng để trả sách.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -720,17 +854,11 @@ namespace Managment.Forms
             var currentRow = dataGridViewLoan.CurrentRow.DataBoundItem as DataRowView;
             if (currentRow?.Row["ReturnedDate"] != DBNull.Value)
             {
-                MessageBox.Show("Sách này đã được trả rồi!");
+                MessageBox.Show("Sách này đã được trả rồi!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            var confirm = MessageBox.Show(
-                "Xác nhận trả sách này?",
-                "Xác nhận",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
+            var confirm = MessageBox.Show("Xác nhận trả sách này?","Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm == DialogResult.No)
                 return;
 
@@ -742,8 +870,7 @@ namespace Managment.Forms
         -- Cập nhật Status của BookCopy về Available
         UPDATE BookCopy
         SET Status = 0
-        WHERE CopyId = (SELECT CopyId FROM LoanDetail WHERE LoanDetailId = @LoanDetailId);
-    ";
+        WHERE CopyId = (SELECT CopyId FROM LoanDetail WHERE LoanDetailId = @LoanDetailId);";
 
             try
             {
