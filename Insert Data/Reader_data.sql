@@ -1,7 +1,7 @@
 ﻿INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10001,
-	N'Đinh Nguyên Hoàng',
+	N'Nguyễn Văn An',
 	'0873448820'
 );
 GO
@@ -9,7 +9,7 @@ GO
 INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10002,
-	N'Phạm Tuấn Hưng',
+	N'Phạm Thị Nhàn',
 	'0987778822'
 );
 GO
@@ -17,7 +17,7 @@ GO
 INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10003,
-	N'Nguyễn Thành An',
+	N'Nguyễn Thành Công',
 	'0996457445'
 );
 GO
@@ -25,7 +25,7 @@ GO
 INSERT INTO Readers (reader_id, reader_name, contact_number)
 VALUES (
 	10004,
-	N'Nhật Minh Quang',
+	N'Nguyễn Nhật Minh',
 	'0944136988'
 );
 GO
@@ -158,4 +158,5 @@ VALUES (
 );
 
 GO
+
 
