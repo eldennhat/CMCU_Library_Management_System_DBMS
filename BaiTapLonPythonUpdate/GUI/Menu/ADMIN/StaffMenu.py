@@ -168,7 +168,7 @@ class StaffManagementView(tk.Frame):
         display_frame.pack(fill="both", expand=True, padx=10, pady=10, side="top")
 
         #
-        columns = ("staff_id", "full_name", "position", "phone", "username", "password")
+        columns = ("staff_id", "full_name", "phone", "start", "end", "username", "role" ,"password")
         scrollbar_y = ttk.Scrollbar(display_frame, orient="vertical")
         scrollbar_x = ttk.Scrollbar(display_frame, orient="horizontal")
         self.tree = ttk.Treeview(display_frame, columns=columns, show="headings",
@@ -178,15 +178,20 @@ class StaffManagementView(tk.Frame):
         scrollbar_x.config(command=self.tree.xview)
         self.tree.heading("staff_id", text="ID")
         self.tree.heading("full_name", text="Tên")
-        self.tree.heading("position", text="Vai trò")
         self.tree.heading("phone", text="SĐT")
+        self.tree.heading("start", text="Thời gian bắt đầu")
+        self.tree.heading("end", text= "Thời gian kết thúc")
         self.tree.heading("username", text="Tên đăng nhập")
+        self.tree.heading("role", text = "Vai trò")
         self.tree.heading("password", text="Mật khẩu")
+
         self.tree.column("staff_id", width=80, anchor="center")
         self.tree.column("full_name", width=250)
-        self.tree.column("position", width=120)
         self.tree.column("phone", width=150)
+        self.tree.column("start", width=150)
+        self.tree.column("end", width=150)
         self.tree.column("username", width=150)
+        self.tree.column("role", width=120)
         self.tree.column("password", width=150)
         scrollbar_y.pack(side="right", fill="y")
         scrollbar_x.pack(side="bottom", fill="x")
