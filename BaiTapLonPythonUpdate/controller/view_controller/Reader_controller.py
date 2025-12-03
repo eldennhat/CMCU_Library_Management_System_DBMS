@@ -3,7 +3,7 @@ import pymssql
 
 
 from database.db_connector import get_db_connection
-from database.logger_service import logger # Thêm import logger
+from database.logger_service import logger # import logger
 
 
 # ===== CÁC HÀM XỬ LÝ ĐỘC GIẢ ======
@@ -44,7 +44,7 @@ def add_reader(full_name, phone, address):
         conn.commit()
         
         # Ghi log
-        logger.insert_log("Admin", "Add Reader", f"Added new reader: {full_name}", 
+        logger.insert_log(username, "Add Reader", f"Added new reader: {full_name}", 
                           {"phone": phone, "address": address})
         
         return True
@@ -53,7 +53,7 @@ def add_reader(full_name, phone, address):
         conn.rollback()
         
         # Ghi log lỗi
-        logger.insert_log("Admin", "Add Reader Failed", f"Failed to add reader {full_name}: {e}")
+        logger.insert_log(username, "Add Reader Failed", f"Failed to add reader {full_name}: {e}")
         
         return False
     finally:
@@ -79,7 +79,7 @@ def update_reader(reader_id, full_name, phone, address):
         conn.commit()
         
         # Ghi log
-        logger.insert_log("Admin", "Update Reader", f"Updated reader ID {reader_id}", 
+        logger.insert_log(username, "Update Reader", f"Updated reader ID {reader_id}", 
                           {"new_name": full_name, "new_phone": phone})
         
         return True
@@ -88,7 +88,7 @@ def update_reader(reader_id, full_name, phone, address):
         conn.rollback()
         
         # Ghi log lỗi
-        logger.insert_log("Admin", "Update Reader Failed", f"Failed to update reader ID {reader_id}: {e}")
+        logger.insert_log(username, "Update Reader Failed", f"Failed to update reader ID {reader_id}: {e}")
         
         return False
     finally:
@@ -110,7 +110,7 @@ def delete_reader(reader_id):
         conn.commit()
         
         # Ghi log
-        logger.insert_log("Admin", "Delete Reader", f"Deleted reader ID {reader_id}", {"reader_id": reader_id})
+        logger.insert_log(username, "Delete Reader", f"Deleted reader ID {reader_id}", {"reader_id": reader_id})
         
         return True
     except pymssql.Error as e:
@@ -119,7 +119,7 @@ def delete_reader(reader_id):
         conn.rollback()
         
         # Ghi log lỗi
-        logger.insert_log("Admin", "Delete Reader Failed", f"Failed to delete reader ID {reader_id}: {e}")
+        logger.insert_log(username, "Delete Reader Failed", f"Failed to delete reader ID {reader_id}: {e}")
         
         return False
     finally:
