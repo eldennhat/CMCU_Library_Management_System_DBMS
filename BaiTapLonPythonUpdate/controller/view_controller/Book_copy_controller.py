@@ -17,7 +17,7 @@ def add_book_copy(book_id, publisher, status, storagenote, barcode, price):
         conn.commit()
         
         # Ghi log
-        logger.insert_log("Admin", "Add BookCopy", f"Added copy for BookID {book_id}", 
+        logger.insert_log(username, "Add BookCopy", f"Added copy for BookID {book_id}", 
                           {"barcode": barcode, "publisher": publisher, "price": price})
         
         return True
@@ -26,7 +26,7 @@ def add_book_copy(book_id, publisher, status, storagenote, barcode, price):
         conn.rollback()
         
         # Ghi log lỗi
-        logger.insert_log("Admin", "Add BookCopy Error", f"Failed to add copy for BookID {book_id}: {e}")
+        logger.insert_log(username, "Add BookCopy Error", f"Failed to add copy for BookID {book_id}: {e}")
         
         return None
     finally:
@@ -50,7 +50,7 @@ def update_book_copy(copy_id, book_id, publisher, status, storage_note, barcode,
         conn.commit()
         
         # Ghi log
-        logger.insert_log("Admin", "Update BookCopy", f"Updated copy ID {copy_id}", 
+        logger.insert_log(username, "Update BookCopy", f"Updated copy ID {copy_id}", 
                           {"barcode": barcode, "new_status": status})
         
         return True
@@ -58,7 +58,7 @@ def update_book_copy(copy_id, book_id, publisher, status, storage_note, barcode,
         print(f"Lỗi SQL: {e}")
         
         # Ghi log lỗi
-        logger.insert_log("Admin", "Update BookCopy Error", f"Failed to update copy ID {copy_id}: {e}")
+        logger.insert_log(username, "Update BookCopy Error", f"Failed to update copy ID {copy_id}: {e}")
         
         return False
     finally:
@@ -74,7 +74,7 @@ def delete_book_copy(copy_id):
         conn.commit()
         
         # Ghi log
-        logger.insert_log("Admin", "Delete BookCopy", f"Deleted copy ID {copy_id}", {"copy_id": copy_id})
+        logger.insert_log(username, "Delete BookCopy", f"Deleted copy ID {copy_id}", {"copy_id": copy_id})
         
         return True
     except pymssql.Error as e:
@@ -82,7 +82,7 @@ def delete_book_copy(copy_id):
         conn.rollback()
         
         # Ghi log lỗi
-        logger.insert_log("Admin", "Delete BookCopy Failed", f"Failed to delete copy ID {copy_id}: {e}")
+        logger.insert_log(username, "Delete BookCopy Failed", f"Failed to delete copy ID {copy_id}: {e}")
         
         return False
     finally:
