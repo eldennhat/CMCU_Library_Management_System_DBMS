@@ -47,7 +47,7 @@ def add_book(book_data):
         
         # Ghi log
         # book_data = (isbn, title, category, author, year)
-        logger.insert_log("Admin", "Add Book", f"Added book: {book_data[1]}", {"isbn": book_data[0], "author": book_data[3]})
+        logger.insert_log(username, "Add Book", f"Added book: {book_data[1]}", {"isbn": book_data[0], "author": book_data[3]})
         
         return True
     except pymssql.Error as e:
@@ -85,7 +85,7 @@ def update_book(book_data):
         
         # Ghi log
         # book_data = (isbn, title, category, author, year, book_id)
-        logger.insert_log("Admin", "Update Book", f"Updated book ID {book_data[5]}", {"new_title": book_data[1]})
+        logger.insert_log(username, "Update Book", f"Updated book ID {book_data[5]}", {"new_title": book_data[1]})
         
         return True
     except pymssql.Error as e:
@@ -113,14 +113,14 @@ def delete_book(book_id):
         conn.commit()
         
         # Ghi log
-        logger.insert_log("Admin", "Delete Book", f"Deleted book ID {book_id}", {"book_id": book_id})
+        logger.insert_log(username, "Delete Book", f"Deleted book ID {book_id}", {"book_id": book_id})
         
         return True
     except pymssql.Error as e:
         print(f"Lỗi truy vấn SQL Phải ĐẢM BẢO KHÔNG CÓ ĐẦU SÁCH NÀY Ở MỤC Bản sao sách: {e}")
         
         # Ghi log lỗi
-        logger.insert_log("Admin", "Delete Book Failed", f"Failed to delete book ID {book_id}: {e}", {"book_id": book_id})
+        logger.insert_log(username, "Delete Book Failed", f"Failed to delete book ID {book_id}: {e}", {"book_id": book_id})
         
         return False
     finally:
