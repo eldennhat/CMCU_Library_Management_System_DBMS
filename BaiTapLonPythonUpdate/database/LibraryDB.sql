@@ -121,66 +121,11 @@ values
 	('librarian4', '123', N'Librarian', 4)
 go
 
-insert into Book (ISBN, Title, CategoryName, BookAuthor, PublishYear)
-values 
-	('978-604-2-13519-1', N'Dế mèn phiêu lưu kí', N'Truyện dài', N'Tô Hoài', '2023'),
-	('978140882594', N'Happy Potter', N'Truyện dài', N'J.K Rowling', '1997'),
-	('30184934', N'Chưa có tên', N'Truyện ngắn', N'Chưa có tác giả', '2000')
-go
-
-insert into BookCopy (BookId, Barcode, StorageNote, BookMoney, PublisherName, [Status])
-values 
-	('1', N'12345', N'Kệ truyện dài', '50000', 'NXB1', 0),
-	('2', N'67890', N'Kệ truyện dài', '55000', 'NXB2', 0),
-	('3', N'24680', N'Kệ truyện ngắn', '60000', 'NXB3', 0)
-go
-
-insert into Reader(FullName, Phone, [Address])
-values
-	(N'Khuất Thuỳ Linh', '0987653213', N'Khu 3 Hoàng Cương'),
-	(N'Nguyễn Duy Anh', '0987641345', N'Thanh Ba'),
-	(N'Hà Văn Võ Quyền', '0987343526', N'Phú Thọ')
-go
 
 
--- Trigger tự động tính Fine khi cập nhật ReturnedDate
-if object_id('TRG_CalculateFine', 'TR') is not null
-    drop trigger TRG_CalculateFine
-go
 
-create trigger TRG_CalculateFine
-on LoanDetail
-after insert, update
-as
-begin
-    -- Chỉ chạy khi ReturnedDate được cập nhật
-    if update(ReturnedDate)
-    begin
-        update ld
-        set Fine = 
-            case
-                -- Chưa trả sách
-                when i.ReturnedDate IS NULL then NULL
-                
-                -- Trả đúng hạn hoặc sớm
-                when i.ReturnedDate <= l.DueDate then 0
-                
-                -- Trả trễ nhưng <= 10 ngày kể từ LoanDate
-                when i.ReturnedDate > l.DueDate 
-                     and datediff(day, l.LoanDate, i.ReturnedDate) <= 10
-                then datediff(day, l.DueDate, i.ReturnedDate) * 20000
-                
-                -- Quá 10 ngày kể từ LoanDate -> phạt gấp đôi tiền sách
-                else bc.BookMoney * 2
-            end
-        from LoanDetail ld
-        inner join inserted i on ld.LoanDetailId = i.LoanDetailId
-        inner join Loan l on ld.LoanId = l.LoanId
-        inner join BookCopy bc on ld.CopyId = bc.CopyId;
-    end
-end
-go
 
-select *
-from dbo.Book
+
+
+
 
