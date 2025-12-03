@@ -15,7 +15,7 @@ class SystemLog:
             print("MongoDB Connected")
         except Exception as e:
             print(f"Error connecting to MongoDB: {e}")
-    def insert_log(self, username, action, message, detail = None ):
+    def insert_log(self, username, action, message, detail = None):
         #insert log to mongoDB
         log_data = {
             "username": username,
@@ -30,4 +30,13 @@ class SystemLog:
             print(f"Logged: {action}")
         except Exception as e:
             print(f"Error: {e}")
+    # lấy lịch sử hoạt động
+    def get_history_staff(self, username):
+        try:
+            ket_qua = self.collection.find({"username": username}).sort("time", -1)
+            log_list = list(ket_qua)
+            return log_list
+        except Exception as e:
+            print(f"Error: {e}")
+            return []
 logger = SystemLog()
