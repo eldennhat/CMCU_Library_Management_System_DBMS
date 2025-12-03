@@ -79,7 +79,7 @@ def create_new_loan(reader_id, staff_id, due_date, list_of_copy_ids):
         conn.commit()
         
         # Ghi log
-        logger.insert_log("Admin", "Create Loan", f"Created Loan ID {int(new_loan_id)}", 
+        logger.insert_log(username, "Create Loan", f"Created Loan ID {int(new_loan_id)}", 
                           {"reader_id": reader_id, "staff_id": staff_id, "copy_ids": list_of_copy_ids})
         
         return (True, f"Tạo phiếu mượn thành công! Loan ID: {int(new_loan_id)}")
@@ -89,7 +89,7 @@ def create_new_loan(reader_id, staff_id, due_date, list_of_copy_ids):
         print(f"Lỗi SQL (create_new_loan): {e}")
         
         # Ghi log lỗi
-        logger.insert_log("Admin", "Create Loan Failed", f"Failed to create loan for reader {reader_id}: {e}")
+        logger.insert_log(username, "Create Loan Failed", f"Failed to create loan for reader {reader_id}: {e}")
         
         return (False, f"Lỗi CSDL: {e}")
     except Exception as e:
@@ -151,7 +151,7 @@ def return_book_copy(copy_id, returned_datetime_str):
             message += f"\nTiền phạt: {fine:,.0f} VNĐ"
             
         # Ghi log
-        logger.insert_log("Admin", "Return Book", f"Returned book copy ID {copy_id}", 
+        logger.insert_log(username, "Return Book", f"Returned book copy ID {copy_id}", 
                           {"return_date": returned_datetime_str, "fine": fine})
 
         return (True, message)
@@ -161,7 +161,7 @@ def return_book_copy(copy_id, returned_datetime_str):
         print(f"Lỗi SQL (return_book_copy): {e}")
         
         # Ghi log lỗi
-        logger.insert_log("Admin", "Return Book Failed", f"Failed to return copy ID {copy_id}: {e}")
+        logger.insert_log(username, "Return Book Failed", f"Failed to return copy ID {copy_id}: {e}")
         
         return (False, f"Lỗi CSDL: {e}")
     except Exception as e:
@@ -272,7 +272,7 @@ def delete_loan(loan_id):
         conn.commit()
         
         # Ghi log
-        logger.insert_log("Admin", "Delete Loan", f"Deleted Loan ID {loan_id}", 
+        logger.insert_log(username, "Delete Loan", f"Deleted Loan ID {loan_id}", 
                           {"restored_copies_count": len(copy_ids_to_update)})
         
         return (True, f"Đã xóa thành công Phiếu mượn ID: {loan_id} và cập nhật {len(copy_ids_to_update)} cuốn sách.")
@@ -282,7 +282,7 @@ def delete_loan(loan_id):
         print(f"Lỗi SQL (delete_loan): {e}")
         
         # Ghi log lỗi
-        logger.insert_log("Admin", "Delete Loan Failed", f"Failed to delete Loan ID {loan_id}: {e}")
+        logger.insert_log(username, "Delete Loan Failed", f"Failed to delete Loan ID {loan_id}: {e}")
         
         # GHI CHÚ: Báo lỗi nếu nó đang bị khóa bởi FK khác (ít xảy ra)
         return (False, f"Lỗi CSDL: Không thể xóa phiếu mượn. {e.args[0]}")
