@@ -2,6 +2,7 @@ import tkinter as tk
 
 from tkinter import messagebox
 
+from database.logger_service import logger
 from GUI.Menu.LOGIN.MenuLogin import LoginView
 from GUI.Menu.ADMIN.AdminMenu import AdminMenu
 from GUI.Menu.LIBRARIAN.LibrarianMenu import LibrarianMenu
@@ -18,20 +19,30 @@ class MainApplication(tk.Tk):
         self.show_login_view()
 
     def show_login_view(self):
-        #Huỷ frame cũ nếu có
         if self.current_frame:
             self.current_frame.destroy()
-
-
-        #Giải thích: hàm on_login_succes sẽ được gọi cho hàm callback, và sẽ trả về role ở login
         self.current_frame = LoginView(self, on_login_callback= self.on_login_success)
-
-        #Cập nhật lại cửa sổ
         self.title("Ứng dụng Quản lý thư viện ")
         self.geometry("600x400")
         self.resizable(False, False)
 
-    def on_login_success(self, role):
+    def on_login_success(self, username, role):
+        self.current_user = username
+        print(f"Đang tìm nhật ký của: {username}")
+
+        # Gọi hàm lấy lịch sử từ logger
+        danh_sach = logger.get_history_staff(username)
+        if len(danh_sach) > 0:
+            for log in danh_sach:
+                thoi_gian = log.get("time").strftime("%H:%M:%S %d/%m/%Y")
+                hanh_dong = log.get("action")
+                trang_thai = log.get("status", "Info")
+                thong_diep = log.get("message")
+                print(f"{hanh_dong}:[{thoi_gian}] - {trang_thai}: {thong_diep}")
+        else:
+            print("Không tìm thấy lịch sử hoạt động nào.")
+        # -------------------------------------------------------
+
         if role == "Admin":
             self.show_admin_menu() #Hàm hiển thị admin ở dưới
         elif role == "Librarian":
@@ -56,7 +67,6 @@ class MainApplication(tk.Tk):
         self.geometry("1000x800")
         self.title("Thủ thư")
         self.resizable(False, False)
-
 
 if __name__ == "__main__": #Điểm khởi chạy
     app = MainApplication()
