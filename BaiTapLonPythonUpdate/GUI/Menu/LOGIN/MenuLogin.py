@@ -116,10 +116,10 @@ class LoginView(tk.Frame):
         #Gọi hàm check: Hàm nhận 2 tham số để check trong csdl
         #Hàm check_login ở controller sẽ check xem có chuẩn thông tin không
 
-        if role: #nếu chả về chuẩn check login sẽ true, và trả về role cho Main
-            self.on_login_callback(role)
+        if role: 
+            self.on_login_callback(username, role)
         else:
-            messagebox.showwarning(message = "Đăng nhập thất bại! sai tên sai mk")
+            print("Đăng nhập thất bại! sai tên sai mk")
 
 
 
