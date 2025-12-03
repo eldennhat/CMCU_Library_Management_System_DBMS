@@ -30,10 +30,12 @@ class SystemLog:
             print(f"Logged: {action}")
         except Exception as e:
             print(f"Error: {e}")
-    # lấy lịch sử hoạt động
+
     def get_history_staff(self, username):
+        #tìm tất cả lịch sử hoạt động của một nhân viên cụ thể
         try:
-            ket_qua = self.collection.find({"username": username}).sort("time", -1)
+            query = {"username": {"$regex": f"^{username}$", "$options": "i"}}
+            ket_qua = self.collection.find(query).sort("time", -1)
             log_list = list(ket_qua)
             return log_list
         except Exception as e:
